@@ -34,6 +34,6 @@ lms:
 The config directory must have the proper permissions. Otherwise lms will not start. You can set it with:
  ```
  mkdir -p /config_directory
- chown 104:65534 /config_directory
+ chown 101:65534 /config_directory
  ```
  
