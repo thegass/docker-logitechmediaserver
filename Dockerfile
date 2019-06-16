@@ -13,7 +13,7 @@ RUN \
 RUN /bin/bash -c '\
   export DEBIAN_FRONTEND="noninteractive" && \
   OUT=$(curl -skL "http://downloads.slimdevices.com/nightly/index.php?ver=7.9") && \
-  REGEX=".*href=\".(.*logitechmediaserver_7.9.1~[0-9]{4,}_amd64.deb)\"" && \
+  REGEX=".*href=\".(.*logitechmediaserver_7.9.2~[0-9]{4,}_amd64.deb)\"" && \
   if [[ ${OUT} =~ ${REGEX} ]]; then URL="http://downloads.slimdevices.com/nightly${BASH_REMATCH[1]}"; else exit 42; fi && \
   curl -skL -o /tmp/lms.deb $URL && \
   dpkg -i /tmp/lms.deb && \
