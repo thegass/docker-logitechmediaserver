@@ -12,7 +12,7 @@ RUN \
 # Install LMS
 RUN /bin/bash -c '\
   export DEBIAN_FRONTEND="noninteractive" && \
-  OUT=$(curl -skL "http://downloads.slimdevices.com/nightly/index.php?ver=7.9") && \
+  OUT=$(curl -skL "http://downloads.slimdevices.com/nightly/index.php?ver=8.0") && \
   REGEX=".*href=\".(.*logitechmediaserver_8.0.0~[0-9]{4,}_amd64.deb)\"" && \
   if [[ ${OUT} =~ ${REGEX} ]]; then URL="http://downloads.slimdevices.com/nightly${BASH_REMATCH[1]}"; else exit 42; fi && \
   curl -skL -o /tmp/lms.deb $URL && \
