@@ -27,6 +27,7 @@ RUN \
 VOLUME /config /music
 EXPOSE 3483 3483/udp 9000 9090
 
+COPY sbs_entrypoint.sh /usr/bin/sbs_entrypoint.sh
 USER squeezeboxserver
-ENTRYPOINT ["squeezeboxserver"]
+ENTRYPOINT ["sbs_entrypoint.sh"]
 CMD ["--prefsdir", "/config/prefs", "--logdir", "/config/logs", "--cachedir", "/config/cache"]
