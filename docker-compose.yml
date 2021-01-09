@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  lms:
+    build:
+      context: ./Docker/
+      dockerfile: Dockerfile
+    networks:
+      dockervlan64:
+        ipv4_address: 192.168.3.66
+    command:
+      - "--prefsdir=/config/prefs"
+      - "--logdir=/config/logs"
+      - "--cachedir=/cache"
+      - "--httpaddr=192.168.3.66"
+      - "--cliaddr=192.168.3.66"
+    environment:
+      - PUID=1000
+      - GUID=1000
+    volumes:
+      - /home/gass/docker/data/lms/config:/config
+      - /home/gass/docker/data/lms/cache:/cache
+      - /home/gass/docker/data/lms/media:/media
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+networks:
+  dockervlan64:
+    external: true

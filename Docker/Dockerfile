@@ -12,8 +12,8 @@ RUN \
 # Install LMS
 RUN /bin/bash -c '\
   export DEBIAN_FRONTEND="noninteractive" && \
-  OUT=$(curl -skL "http://downloads.slimdevices.com/nightly/index.php?ver=8.2") && \
-  REGEX=".*href=\".(.*logitechmediaserver_8.2.0~[0-9]{4,}_amd64.deb)\"" && \
+  OUT=$(curl -skL "http://downloads.slimdevices.com/nightly/index.php?ver=8.1") && \
+  REGEX=".*href=\".(.*logitechmediaserver_8.1.1~[0-9]{4,}_amd64.deb)\"" && \
   if [[ ${OUT} =~ ${REGEX} ]]; then URL="http://downloads.slimdevices.com/nightly${BASH_REMATCH[1]}"; else exit 42; fi && \
   curl -skL -o /tmp/lms.deb $URL && \
   dpkg -i /tmp/lms.deb && \
@@ -21,6 +21,8 @@ RUN /bin/bash -c '\
   '
 
 RUN \
+  usermod -o -u 1000 squeezeboxserver && \
+  groupmod -o -g 1000 nogroup && \ 
   mkdir /config /music && \
   chown squeezeboxserver:nogroup /config /music
 
