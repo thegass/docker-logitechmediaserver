@@ -21,6 +21,8 @@ services:
       - /home/gass/docker/data/lms/config:/config
       - /home/gass/docker/data/lms/cache:/cache
       - /home/gass/docker/data/lms/media:/media
+      - /media/audio:/audio
+      - /media/playlists:/playlists
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
 networks:
